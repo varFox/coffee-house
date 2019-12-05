@@ -7,7 +7,8 @@ export default class ShopItems extends Component {
   coffeeService = new CoffeeService();
   state = {
     coffeeItems: null,
-    str: ''
+    str: '',
+    filter: 'all'
   }
 
   componentDidMount() {
@@ -50,17 +51,37 @@ export default class ShopItems extends Component {
     });
   }
 
+  onFilterSelect = (filter) => {
+    if(filter === this.state.filter) {
+      this.setState({filter: 'all'})
+    } else {
+      this.setState({filter});
+    }
+  }
+
+  filterItems = (items, filter) => {
+    if (filter === 'Brazil') {
+      return items.filter(item => item.country === 'Brazil')
+    } else if (filter === 'Kenya') {
+      return items.filter(item => item.country === 'Kenya')
+    } else if (filter === 'Columbia') {
+      return items.filter(item => item.country === 'Columbia')
+    } else {
+      return items
+    }
+  }  
+
   render() {
 
-    const {coffeeItems, str} = this.state;
+    const {coffeeItems, str, filter} = this.state;
     const {filterView} = this.props;
 
     if(!coffeeItems) {
       return 'Loader'
     }  
 
-    const items = this.renderCoffee(this.searchItems(coffeeItems, str));
-    const fil = filterView ? <FilterItems onSearch={this.onSearch}/> : null;
+    const items = this.renderCoffee(this.filterItems(this.searchItems(coffeeItems, str), filter));
+    const fil = filterView ? <FilterItems onSearch={this.onSearch} onFilterSelect={this.onFilterSelect} filter={filter}/> : null;
 
     return (
       <>

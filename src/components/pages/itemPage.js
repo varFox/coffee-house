@@ -8,7 +8,7 @@ export default class ItemPage extends Component {
     return (
       <>
         <Banner />
-        <Shop/>
+        <Shop short='true'/>
         <Footer />
       </>
       

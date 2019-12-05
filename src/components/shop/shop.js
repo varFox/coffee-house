@@ -57,7 +57,8 @@ export default class Shop extends Component {
             </div>
           </div>
           <div className="line"></div>
-          <ShopItems />
+          <ShopItems 
+            filterView={this.props.filterView}/>
         </>
         
         

@@ -1,80 +1,74 @@
 import React, {Component} from 'react';
+import CoffeeService from './../../services/coffeeService';
+import FilterItems from '../filterItems/filterItems';
 
 export default class ShopItems extends Component {
+
+  coffeeService = new CoffeeService();
+  state = {
+    coffeeItems: null,
+    str: ''
+  }
+
+  componentDidMount() {
+    this.coffeeService.getCoffee()
+      .then((coffeeItems) => {
+        this.setState({coffeeItems});
+      })  
+      .catch(err => console.log(err));
+  }
+
+  renderCoffee(arr) {
+    return arr.map(item => {
+      const {id, name, url, price, country, description} = item;
+
+      return (
+        <div 
+          className="shop__item"
+          key={id}>
+          <img src={url} alt={name} />
+          <div className="shop__item-title">
+            {name}
+          </div>
+        <div className="shop__item-country">{country}</div>
+        <div className="shop__item-price">{price}</div>
+        </div>
+      )
+    })
+  }
+
+  onSearch = (str) => {
+    this.setState({str});
+  }
+
+  searchItems = (items, list) => {
+    if (list.length === 0) {
+      return items
+    }
+    return items.filter(item => {
+      return item.name.toUpperCase().indexOf(list.toUpperCase()) > -1
+    });
+  }
+
   render() {
+
+    const {coffeeItems, str} = this.state;
+    const {filterView} = this.props;
+
+    if(!coffeeItems) {
+      return 'Loader'
+    }  
+
+    const items = this.renderCoffee(this.searchItems(coffeeItems, str));
+    const fil = filterView ? <FilterItems onSearch={this.onSearch}/> : null;
+
     return (
       <>
-        <div className="row">
-          <div className="col-lg-4 offset-2">
-            <form action="#" className="shop__search" >
-              <label className="shop__search-label" htmlFor="filter">Looking for</label>
-              <input id="filter" type="text" placeholder="start typing here..." className="shop__search-input" />
-            </form>
-          </div>
-          <div className="col-lg-4">
-            <div className="shop__filter">
-              <div className="shop__filter-label">
-                Or filter
-              </div>
-              <div className="shop__filter-group">
-                <button className="shop__filter-btn">Brazil</button>
-                <button className="shop__filter-btn">Kenya</button>
-                <button className="shop__filter-btn">Columbia</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        {fil}
         <div className="row">
           <div className="col-lg-10 offset-lg-1">
             <div className="shop__wrapper">
-              <div className="shop__item">
-                <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee" />
-                <div className="shop__item-title">
-                  Solimo Coffee Beans 2kg
-                </div>
-                <div className="shop__item-country">Brazil</div>
-                <div className="shop__item-price">10.73$</div>
-              </div>
-              <div className="shop__item">
-                <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee" />
-                <div className="shop__item-title">
-                  Presto Coffee Beans 1kg
-                </div>
-                <div className="shop__item-country">Brazil</div>
-                <div className="shop__item-price">15.99$</div>
-              </div>
-              <div className="shop__item">
-                <img src="https://hhp-blog.s3.amazonaws.com/2018/07/iStock-673468996.jpg" alt="coffee" />
-                <div className="shop__item-title">
-                  AROMISTICO Coffee 1kg
-                </div>
-                <div className="shop__item-country">Brazil</div>
-                <div className="shop__item-price">6.99$</div>
-              </div>
-              <div className="shop__item">
-                <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee" />
-                <div className="shop__item-title">
-                  Solimo Coffee Beans 2kg
-                </div>
-                <div className="shop__item-country">Brazil</div>
-                <div className="shop__item-price">10.73$</div>
-              </div>
-              <div className="shop__item">
-                <img src="https://i0.wp.com/www.healthline.com/hlcmsresource/images/AN_images/AN275-cup-of-coffee-732x549-Thumb.jpg?w=756" alt="coffee" />
-                <div className="shop__item-title">
-                  Solimo Coffee Beans 2kg
-                </div>
-                <div className="shop__item-country">Brazil</div>
-                <div className="shop__item-price">10.73$</div>
-              </div>
-              <div className="shop__item">
-                <img src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg" alt="coffee" />
-                <div className="shop__item-title">
-                  Solimo Coffee Beans 2kg
-                </div>
-                <div className="shop__item-country">Brazil</div>
-                <div className="shop__item-price">10.73$</div>
-              </div>
+              {items}
             </div>
           </div>
         </div>

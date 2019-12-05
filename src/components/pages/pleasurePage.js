@@ -16,7 +16,6 @@ export default class PleasurePage extends Component {
           />
         <Shop 
           urlImg={urlImg} 
-          
           />
         <Footer />
       </>

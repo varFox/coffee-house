@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import url from '../../logo/Beans_logo.svg';
 import NavMenu from '../navMenu/navMenu';
-
+import {Link} from 'react-router-dom';
 
 export default class Preview extends Component {
   render() {
@@ -22,7 +22,7 @@ export default class Preview extends Component {
                     <img className="beanslogo" src={url} alt="Beans logo"/>
                     <div className="preview__subtitle">We makes every day full of energy and taste</div>
                     <div className="preview__subtitle">Want to try our beans?</div>
-                    <a href="#" className="preview__btn">More</a>
+                    <Link to='/coffee' className="preview__btn">More</Link>
                 </div>
             </div>
         </div>

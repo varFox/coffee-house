@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import CoffeeService from './../../services/coffeeService';
 import FilterItems from '../filterItems/filterItems';
-
-export default class ShopItems extends Component {
+import {withRouter} from 'react-router-dom';
+class ShopItems extends Component {
 
   coffeeService = new CoffeeService();
   state = {
@@ -26,7 +26,8 @@ export default class ShopItems extends Component {
       return (
         <div 
           className="shop__item"
-          key={id}>
+          key={id}
+          onClick={() => this.props.history.push(name)}>
           <img src={url} alt={name} />
           <div className="shop__item-title">
             {name}
@@ -99,3 +100,5 @@ export default class ShopItems extends Component {
   }
   
 }
+
+export default withRouter(ShopItems);

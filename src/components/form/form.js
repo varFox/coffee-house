@@ -20,7 +20,7 @@ export default class Form extends Component {
                     <input></input>
                     <label className='send-form__label send-form__message'>Your message<p>*</p></label>
                     <textarea></textarea>
-                    <button class="btn">Send us</button>
+                    <button className="btn">Send us</button>
                   </form>
               </div>
 

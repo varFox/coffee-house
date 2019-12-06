@@ -36,6 +36,12 @@ export default class CoffeeService {
     return await this.getResource(`/goods/`);
     
   }
+  getCoffeeItem = async (name) => {
+    let res = await this.getResource(`/coffee/`);
+    res = res[res.findIndex(item => item.name === name)]
+    res['id'] = this.getId();
+    return this._transformCoffee(res);
+  }
 
   getId() {
     return this.id++ + '';

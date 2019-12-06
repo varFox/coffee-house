@@ -16,13 +16,13 @@ export default class NavMenu extends Component {
           </Link>
         </li>
         <li className={type + "__item"}>
-          <Link to='/coffee'>Our coffee</Link>
+          <Link to='/coffee/'>Our coffee</Link>
         </li>
         <li className={type + "__item"}>
-          <Link to='/pleasure'>For your pleasure</Link>
+          <Link to='/pleasure/'>For your pleasure</Link>
         </li>
         <li className={type + "__item"}>
-          <Link to='/contacts'>Contact us</Link>
+          <Link to='/contacts/'>Contact us</Link>
         </li>
       </ul>
     );

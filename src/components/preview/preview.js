@@ -22,7 +22,7 @@ export default class Preview extends Component {
                     <img className="beanslogo" src={url} alt="Beans logo"/>
                     <div className="preview__subtitle">We makes every day full of energy and taste</div>
                     <div className="preview__subtitle">Want to try our beans?</div>
-                    <Link to='/coffee' className="preview__btn">More</Link>
+                    <Link to='/coffee/' className="preview__btn">More</Link>
                 </div>
             </div>
         </div>

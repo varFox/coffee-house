@@ -1,0 +1,93 @@
+@keyframes ldio-udqzjnrylbl {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
+.ldio-udqzjnrylbl div { box-sizing: border-box!important }
+.ldio-udqzjnrylbl > div {
+  position: absolute;
+  width: 98px;
+  height: 98px;
+  top: 51px;
+  left: 51px;
+  border-radius: 50%;
+  border: 10px solid #000;
+  border-color: #794f01 transparent #794f01 transparent;
+  animation: ldio-udqzjnrylbl 2.2222222222222223s linear infinite;
+}
+
+.ldio-udqzjnrylbl > div:nth-child(2), .ldio-udqzjnrylbl > div:nth-child(4) {
+  width: 74px;
+  height: 74px;
+  top: 63px;
+  left: 63px;
+  animation: ldio-udqzjnrylbl 2.2222222222222223s linear infinite reverse;
+}
+.ldio-udqzjnrylbl > div:nth-child(2) {
+  border-color: transparent #fbead8 transparent #fbead8
+}
+.ldio-udqzjnrylbl > div:nth-child(3) { border-color: transparent }
+.ldio-udqzjnrylbl > div:nth-child(3) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-udqzjnrylbl > div:nth-child(3) div:before, .ldio-udqzjnrylbl > div:nth-child(3) div:after { 
+  content: "";
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  left: 34px;
+  background: #794f01;
+  border-radius: 50%;
+  box-shadow: 0 88px 0 0 #794f01;
+}
+.ldio-udqzjnrylbl > div:nth-child(3) div:after {
+  left: -10px;
+  top: 34px;
+  box-shadow: 88px 0 0 0 #794f01;
+}
+
+.ldio-udqzjnrylbl > div:nth-child(4) { border-color: transparent; }
+.ldio-udqzjnrylbl > div:nth-child(4) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-udqzjnrylbl > div:nth-child(4) div:before, .ldio-udqzjnrylbl > div:nth-child(4) div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  left: 22px;
+  background: #fbead8;
+  border-radius: 50%;
+  box-shadow: 0 64px 0 0 #fbead8;
+}
+.ldio-udqzjnrylbl > div:nth-child(4) div:after {
+  left: -10px;
+  top: 22px;
+  box-shadow: 64px 0 0 0 #fbead8;
+}
+.loadingio-spinner-double-ring-nqxo1o3ejla {
+  width: 100%;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff;
+}
+.ldio-udqzjnrylbl {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; 
+  margin-left: calc(50% - 98px);
+}
+.ldio-udqzjnrylbl div { box-sizing: content-box; }

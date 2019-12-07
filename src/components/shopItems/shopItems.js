@@ -2,32 +2,46 @@ import React, {Component} from 'react';
 import CoffeeService from './../../services/coffeeService';
 import FilterItems from '../filterItems/filterItems';
 import {withRouter} from 'react-router-dom';
+import Spinner from '../spinner/spinner';
+import ErrorModule from '../errorModule/errorModule';
 class ShopItems extends Component {
 
   coffeeService = new CoffeeService();
   state = {
     coffeeItems: null,
     str: '',
-    filter: 'all'
+    filter: 'all',
+    error: false,
+    loaded: true
   }
 
   componentDidMount() {
     this.coffeeService.getCoffee()
       .then((coffeeItems) => {
-        this.setState({coffeeItems});
+        this.setState({
+          coffeeItems,
+          loaded: false
+        });
       })  
-      .catch(err => console.log(err));
+      .catch(() => {
+        this.setState({
+          loaded: false,
+          error: true
+        });
+      });
   }
 
-  renderCoffee(arr) {
+  renderCoffee(arr, filter) {
     return arr.map(item => {
-      const {id, name, url, price, country, description} = item;
+      const {id, name, url, price, country} = item;
 
       return (
         <div 
           className="shop__item"
           key={id}
-          onClick={() => this.props.history.push(name)}>
+          onClick={() => {
+            if (filter) this.props.history.push(name)
+          }}>
           <img src={url} alt={name} />
           <div className="shop__item-title">
             {name}
@@ -74,14 +88,13 @@ class ShopItems extends Component {
 
   render() {
 
-    const {coffeeItems, str, filter} = this.state;
+    const {coffeeItems, str, filter, error, loaded} = this.state;
     const {filterView} = this.props;
 
-    if(!coffeeItems) {
-      return 'Loader'
-    }  
+    if (loaded && !error) return <Spinner />
+    if(!loaded && error) return <ErrorModule />
 
-    const items = this.renderCoffee(this.filterItems(this.searchItems(coffeeItems, str), filter));
+    const items = this.renderCoffee(this.filterItems(this.searchItems(coffeeItems, str), filter), filterView);
     const fil = filterView ? <FilterItems onSearch={this.onSearch} onFilterSelect={this.onFilterSelect} filter={filter}/> : null;
 
     return (

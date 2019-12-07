@@ -1,27 +1,14 @@
 import React, {Component} from 'react';
 import urlLogo from './../../logo/Beans_logo_dark.svg';
-
+import Spinner from '../spinner/spinner';
 export default class ShopPoint extends Component {
 
-  state = {
-    item: null
-  }
-
-  componentDidMount() {
-    const {getItem} = this.props;
-    getItem()
-      .then((item) => {
-        this.setState({
-          item
-        });
-      });
-  }
 
   render() {
-    console.log(this.state.item)
-    const {item} = this.state;
+    const {item} = this.props;
+    
     if(!item) {
-      return 'loaded'
+      return <Spinner />
     }
     const {name, country, url, description, price} = item;
     return (

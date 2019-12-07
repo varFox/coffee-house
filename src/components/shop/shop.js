@@ -6,7 +6,7 @@ import ShopPoint from './../shopPoint/shopPoint'
 export default class Shop extends Component {
 
   render() {
-    const {short, urlImg, getItem} = this.props;
+    const {short, urlImg, item} = this.props;
     const Text = () => {
       return (
         <>
@@ -36,7 +36,7 @@ export default class Shop extends Component {
         
       )
     }
-    const block = short ? <ShopPoint getItem={getItem}/> : <Text />;
+    const block = short ? <ShopPoint item={item}/> : <Text />;
     return (
       <section className="shop">
         <div className="container">

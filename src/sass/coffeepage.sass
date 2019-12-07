@@ -123,7 +123,38 @@
             border: 1px solid rgba(0, 0, 0, 0.49)
             box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25)
             border-radius: 4px
-            font-size: 12px;
-            line-height: 17px;
-
-            
+            font-size: 12px
+            line-height: 17px
+.not-found
+    width: 100%
+    height: 100vh
+    background: url('./../img/oops.jpg') center center no-repeat
+    background-size: cover
+    position: absolute
+    &__block
+        position: absolute
+        width: 300px
+        height: 200px
+        left: 350px
+        bottom: 50px
+        text-align: center
+    &__text
+        font-size: 24px
+        color: #fff
+        margin-bottom: 15px
+    &__link
+        color: #fff
+        font-size: 20px
+        &:visited
+            text-decoration: none
+            color: #fff
+        &:hover
+            text-decoration: none
+            color: #fff
+.error-module
+    width: 100%
+    height: 140px
+    text-align: center
+    &__block
+        width: 305px
+        margin: auto

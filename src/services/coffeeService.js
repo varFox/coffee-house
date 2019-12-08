@@ -1,6 +1,6 @@
 export default class CoffeeService {
 
-  _apiBase = 'http://locsalhost:3000';
+  _apiBase = 'http://localhost:3000';
   id = 1;
 
   async getResource(url) {

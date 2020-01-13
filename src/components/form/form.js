@@ -65,13 +65,13 @@ export default class FormApp extends Component {
     const formView = this.state.view ? <Formik 
       initialValues={{ name: '', email: '', phone: '', message: '' }}
       validationSchema={validationSchema}
-      onSubmit={(value, {setSubmitting, resetForm}) => {
+      onSubmit={(value, {resetForm}) => {
         this.setState({view: !this.state.view})
         this.coffeeService.postContacts(value);
         resetForm();
       }}
     >
-      {({values, isSubmitting, errors}) => (
+      {({isSubmitting}) => (
       <Form>
         <label className='send-form__label'>Name<p>*</p></label>
         <MyTextField

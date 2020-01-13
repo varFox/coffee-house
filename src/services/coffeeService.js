@@ -66,4 +66,16 @@ export default class CoffeeService {
       description: item.description
     }
   }
+
+  postContacts = (elem) => {
+    return fetch(this._apiBase + "/contacts", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(elem)
+    })
+      .catch(error => console.log('aaa', error));
+  }
 }
+

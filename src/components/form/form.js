@@ -63,7 +63,7 @@ export default class FormApp extends Component {
   render() {
 
     const formView = this.state.view ? <Formik 
-      initialValues={{ name: '111', email: '111@111.ru', phone: '999999999999', message: '9999999999' }}
+      initialValues={{ name: '', email: '', phone: '', message: '' }}
       validationSchema={validationSchema}
       onSubmit={(value, {setSubmitting, resetForm}) => {
         this.setState({view: !this.state.view})

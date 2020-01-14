@@ -17,6 +17,7 @@ export default class CoffeePage extends Component {
         <Shop 
           urlImg={urlImg} 
           filterView={true}
+          getSourse='getCoffee'
           />
         <Footer />
       </>

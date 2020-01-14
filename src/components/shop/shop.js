@@ -30,7 +30,8 @@ export default class Shop extends Component {
           </div>
           <div className="line"></div>
           <ShopItems 
-            filterView={this.props.filterView}/>
+            filterView={this.props.filterView}
+            getSourse={this.props.getSourse}/>
         </>
         
         

@@ -16,7 +16,7 @@ class ShopItems extends Component {
   }
 
   componentDidMount() {
-    this.coffeeService.getCoffee()
+    this.coffeeService[this.props.getSourse]()
       .then((coffeeItems) => {
         this.setState({
           coffeeItems,

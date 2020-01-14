@@ -67,15 +67,16 @@ export default class CoffeeService {
     }
   }
 
-  postContacts = (elem) => {
-    return fetch(this._apiBase + "/contacts", {
+  postContacts = async (elem) => {
+    return await fetch(this._apiBase + "/contacts", {
       method: 'POST',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(elem)
     })
-      .catch(error => console.log('aaa', error));
+    .catch(error => console.log('aaa', error));
   }
 }
 

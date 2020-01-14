@@ -54,19 +54,27 @@ const validationSchema = yup.object().shape({
   phone: yup.string(),
   message: yup.string().required()
 });
+
 export default class FormApp extends Component {
 
   coffeeService = new CoffeeService();
   state = {
-    view: false
+    view: JSON.parse(localStorage.getItem('view') || 'true') 
   }
-  render() {
 
+
+  updateState = () => {
+    this.setState({view: JSON.parse(localStorage.getItem('view'))})
+  }
+
+  render() {
+    console.log(this.state.view)
     const formView = this.state.view ? <Formik 
       initialValues={{ name: '', email: '', phone: '', message: '' }}
       validationSchema={validationSchema}
-      onSubmit={(value, {resetForm}) => {
-        this.setState({view: !this.state.view})
+      onSubmit={(value, {setSubmitting, resetForm}) => {
+        setSubmitting(false);
+        localStorage.setItem('view', 'false')
         this.coffeeService.postContacts(value);
         resetForm();
       }}
@@ -88,8 +96,7 @@ export default class FormApp extends Component {
           placeholder='8(900)999-00-00'
           mask="8(999)999-99-99"
           name='phone'
-          type='text'
-          id="phone" />
+          type='text'/>
         <label className='send-form__label send-form__message'>Your message<p>*</p></label>
         <div className='boxForTextarea'>
           <MyTextarea 
@@ -102,7 +109,10 @@ export default class FormApp extends Component {
       <h2>Thank you so much<br />We contact you as soon as posible</h2>
       <img className="Napkin" src={urlImg} alt="Napkin" />
       <button className="btn"
-              onClick={() => this.setState({view: !this.state.view})}
+              onClick={() => {
+                localStorage.setItem('view', 'true')
+                this.updateState()
+              }}
       >Another ? <img className="arrow-back" src={urlArrow} alt="arrow" /></button>
     </div>
 
@@ -113,7 +123,7 @@ export default class FormApp extends Component {
               <div className="col-lg-12">
                 <div className="title">Tell us about your tastes</div>
                 <img className="beanslogo" src={urlLogo} alt="Beans logo" />
-                {formView}    
+                {formView}
               </div>
           </div>
         </div>

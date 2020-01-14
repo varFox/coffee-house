@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import CoffeeService from './../../services/coffeeService';
 import Spinner from '../spinner/spinner';
 import ErrorModule from '../errorModule/errorModule';
+import {withRouter} from 'react-router-dom';
 
-export default class OurBest extends Component {
+class OurBest extends Component {
 
   coffeeService = new CoffeeService();
   state = {
@@ -35,6 +36,9 @@ export default class OurBest extends Component {
       return (
         <div 
           className="best__item"
+          onClick={() => {
+            this.props.history.push('/coffee/' + name)
+          }}
           key={id}>
           <img src={url} alt={name} />
           <div className="best__item-title">
@@ -72,3 +76,5 @@ export default class OurBest extends Component {
     );
   }
 }
+
+export default withRouter(OurBest);

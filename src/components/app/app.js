@@ -25,7 +25,7 @@ export default class App extends Component {
                 } 
               }/>
             <Route path='/pleasure' exact component={PleasurePage} />
-            <Route path='/contacts' component={ContactsPage} />
+            <Route path='/contacts' exact component={ContactsPage} />
             <Route component={NotFoundPage} />
           </Switch>
           
